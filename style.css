@@ -1,0 +1,1142 @@
+:root {
+  --bg: #080808;
+  --panel: #101010;
+  --text: #f4f2ed;
+  --muted: #8c8b87;
+  --line: rgba(255, 255, 255, 0.12);
+  --accent: #d9ff55;
+  --max: 1240px;
+}
+
+/* =========================
+   RESET
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+body:before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 70% 10%,
+      rgba(217, 255, 85, 0.07),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 15% 65%,
+      rgba(255, 255, 255, 0.035),
+      transparent 25%
+    );
+
+  z-index: -2;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.dot {
+  color: var(--accent);
+}
+
+
+/* =========================
+   NOISE
+========================= */
+
+.noise {
+  position: fixed;
+  inset: 0;
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 20;
+
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.nav {
+  height: 86px;
+  max-width: var(--max);
+  margin: auto;
+  padding: 0 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font: 800 18px "Manrope";
+  letter-spacing: 0.08em;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid var(--line);
+  border-radius: 50%;
+
+  font-size: 13px;
+}
+
+.nav nav {
+  display: flex;
+  gap: 34px;
+
+  color: #aaa;
+  font-size: 13px;
+}
+
+.nav nav a:hover,
+.text-btn:hover {
+  color: #fff;
+}
+
+.nav-cta {
+  font-size: 12px;
+
+  border: 1px solid var(--line);
+  padding: 11px 15px;
+  border-radius: 99px;
+}
+
+.nav-cta span {
+  color: var(--accent);
+  margin-left: 7px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  min-height: calc(100vh - 86px);
+
+  max-width: var(--max);
+  margin: auto;
+
+  padding: 80px 28px 90px;
+
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 60px;
+
+  align-items: center;
+}
+
+.eyebrow {
+  font: 600 10px "Manrope";
+  letter-spacing: 0.2em;
+  color: #898985;
+
+  margin: 0 0 25px;
+}
+
+.eyebrow span {
+  display: inline-block;
+
+  width: 28px;
+  height: 1px;
+
+  background: var(--accent);
+
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Manrope";
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(58px, 8vw, 112px);
+  line-height: 0.9;
+
+  letter-spacing: -0.065em;
+  font-weight: 700;
+}
+
+h1 em,
+h2 em {
+  font-style: normal;
+  color: #7d7d79;
+}
+
+.hero-text {
+  max-width: 470px;
+
+  color: #989792;
+  line-height: 1.7;
+  font-size: 15px;
+
+  margin: 30px 0;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.primary-btn {
+  background: var(--text);
+  color: #0a0a0a;
+
+  padding: 15px 20px;
+  border-radius: 99px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  transition: transform 0.3s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+}
+
+.primary-btn span {
+  margin-left: 16px;
+}
+
+.text-btn {
+  font-size: 12px;
+  color: #9d9c98;
+}
+
+.text-btn span {
+  margin-left: 7px;
+  color: var(--accent);
+}
+
+
+/* =========================
+   HERO VISUAL
+========================= */
+
+.hero-visual {
+  position: relative;
+  min-height: 560px;
+
+  display: grid;
+  place-items: center;
+}
+
+.frame {
+  width: min(430px, 82%);
+  height: 530px;
+
+  border: 1px solid var(--line);
+  padding: 14px;
+
+  background: rgba(255, 255, 255, 0.015);
+
+  transform: rotate(2deg);
+
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, 0.55);
+}
+
+.frame-top,
+.frame-bottom {
+  display: flex;
+  justify-content: space-between;
+
+  font: 600 8px "Manrope";
+  letter-spacing: 0.16em;
+
+  color: #6f6f6c;
+}
+
+.frame-art {
+  height: 465px;
+
+  margin: 14px 0;
+
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      #4b4b45 0,
+      #191916 34%,
+      #090909 70%
+    );
+}
+
+.frame-art:after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      130deg,
+      transparent 20%,
+      rgba(217, 255, 85, 0.12),
+      transparent 60%
+    );
+
+  mix-blend-mode: screen;
+
+  pointer-events: none;
+
+  z-index: 3;
+}
+
+.art-letter {
+  position: absolute;
+
+  left: 50%;
+  top: 43%;
+
+  transform: translate(-50%, -50%);
+
+  font: 800 240px "Manrope";
+  line-height: 1;
+
+  color: transparent;
+
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.28);
+
+  z-index: 1;
+}
+
+.art-caption {
+  position: absolute;
+
+  z-index: 4;
+
+  left: 24px;
+  bottom: 23px;
+
+  font: 700 12px/1.2 "Manrope";
+  letter-spacing: 0.08em;
+}
+
+.scanline {
+  position: absolute;
+  inset: 0;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 5px,
+      rgba(255, 255, 255, 0.025) 6px
+    );
+
+  z-index: 4;
+
+  pointer-events: none;
+}
+
+
+/* =========================
+   PROFILE PHOTO
+========================= */
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  display: block;
+
+  position: relative;
+  z-index: 1;
+
+  filter:
+    brightness(0.72)
+    contrast(1.08)
+    saturate(0.9);
+
+  transition:
+    transform 0.6s ease,
+    filter 0.6s ease;
+}
+
+.frame-art:hover .profile-photo {
+  transform: scale(1.03);
+
+  filter:
+    brightness(0.82)
+    contrast(1.08)
+    saturate(1);
+}
+
+
+/* =========================
+   ORBS
+========================= */
+
+.orb {
+  position: absolute;
+
+  border-radius: 50%;
+  filter: blur(60px);
+
+  opacity: 0.35;
+
+  pointer-events: none;
+}
+
+.orb-one {
+  width: 220px;
+  height: 220px;
+
+  background: var(--accent);
+
+  right: 2%;
+  top: 8%;
+}
+
+.orb-two {
+  width: 180px;
+  height: 180px;
+
+  background: #fff;
+
+  left: 5%;
+  bottom: 7%;
+
+  opacity: 0.08;
+}
+
+
+/* =========================
+   MARQUEE
+========================= */
+
+.marquee {
+  display: flex;
+  overflow: hidden;
+
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+
+  white-space: nowrap;
+
+  color: #6e6e6a;
+
+  font: 700 11px "Manrope";
+  letter-spacing: 0.16em;
+}
+
+.marquee div {
+  flex: none;
+
+  padding: 20px 0;
+
+  animation: scroll 24s linear infinite;
+}
+
+.marquee span {
+  color: var(--accent);
+  padding: 0 35px;
+}
+
+@keyframes scroll {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+  max-width: var(--max);
+  margin: auto;
+
+  padding: 140px 28px;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+
+  margin-bottom: 55px;
+}
+
+.section-head h2,
+.about h2,
+.contact h2 {
+  font-size: clamp(44px, 5.5vw, 76px);
+
+  line-height: 0.95;
+
+  letter-spacing: -0.055em;
+}
+
+.section-note {
+  max-width: 300px;
+
+  color: #7e7d79;
+
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+
+/* =========================
+   WORK GRID
+========================= */
+
+.work-grid {
+  display: grid;
+
+  grid-template-columns: 1.15fr 0.85fr;
+
+  gap: 22px;
+}
+
+.work-card {
+  min-width: 0;
+}
+
+.work-card.large {
+  grid-row: span 2;
+}
+
+.work-card.wide {
+  grid-column: 1 / -1;
+}
+
+
+/* =========================
+   WORK VISUALS
+========================= */
+
+.visual {
+  height: 340px;
+
+  position: relative;
+  overflow: hidden;
+
+  border: 1px solid var(--line);
+
+  background: #121212;
+}
+
+.large .visual {
+  height: 570px;
+}
+
+.wide .visual {
+  height: 430px;
+}
+
+
+/* REAL PORTFOLIO IMAGES */
+
+.work-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  display: block;
+
+  position: absolute;
+  inset: 0;
+
+  transition:
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.7s ease;
+
+  filter:
+    brightness(0.68)
+    contrast(1.08)
+    saturate(0.85);
+
+  z-index: 1;
+}
+
+
+/* DARK CINEMATIC OVERLAY */
+
+.visual::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.05) 0%,
+      rgba(0, 0, 0, 0.1) 35%,
+      rgba(0, 0, 0, 0.72) 100%
+    );
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+
+/* LIGHT SWEEP */
+
+.visual::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      140deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.08),
+      transparent 65%
+    );
+
+  transition: transform 0.8s ease;
+
+  z-index: 3;
+
+  pointer-events: none;
+}
+
+
+/* IMAGE HOVER */
+
+.work-card:hover .work-image {
+  transform: scale(1.045);
+
+  filter:
+    brightness(0.82)
+    contrast(1.08)
+    saturate(1);
+}
+
+.work-card:hover .visual::after {
+  transform: translateX(35%);
+}
+
+
+/* FALLBACK BACKGROUNDS */
+
+.visual-01 {
+  background:
+    radial-gradient(
+      circle at 70% 35%,
+      #5d5d55,
+      #151513 42%,
+      #090909 72%
+    );
+}
+
+.visual-02 {
+  background:
+    linear-gradient(
+      145deg,
+      #282824,
+      #0b0b0b
+    );
+}
+
+.visual-03 {
+  background:
+    radial-gradient(
+      circle at 35% 45%,
+      #55554e,
+      #0a0a0a 55%
+    );
+}
+
+.visual-04 {
+  background:
+    linear-gradient(
+      120deg,
+      #171715,
+      #383832 48%,
+      #0a0a0a
+    );
+}
+
+
+/* =========================
+   WORK TEXT
+========================= */
+
+.visual-word {
+  position: absolute;
+
+  bottom: 24px;
+  left: 24px;
+
+  font:
+    800 clamp(25px, 4vw, 56px)
+    "Manrope";
+
+  letter-spacing: -0.05em;
+
+  color: rgba(255, 255, 255, 0.18);
+
+  z-index: 4;
+
+  pointer-events: none;
+}
+
+.card-index {
+  position: absolute;
+
+  top: 20px;
+  right: 20px;
+
+  font: 600 9px "Manrope";
+
+  color: #ddd;
+
+  z-index: 4;
+}
+
+.card-info {
+  padding: 18px 2px 35px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-info span {
+  font: 600 9px "Manrope";
+
+  letter-spacing: 0.15em;
+
+  color: #777;
+}
+
+.card-info h3 {
+  font-size: 18px;
+
+  margin-top: 8px;
+}
+
+.arrow {
+  font-size: 18px !important;
+
+  color: var(--accent) !important;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about {
+  border-top: 1px solid var(--line);
+
+  display: grid;
+
+  grid-template-columns: 0.7fr 1.3fr;
+
+  gap: 80px;
+}
+
+.about-copy {
+  max-width: 800px;
+}
+
+.about-copy > p {
+  max-width: 650px;
+
+  color: #8b8a85;
+
+  line-height: 1.8;
+
+  font-size: 15px;
+}
+
+.stats {
+  display: flex;
+
+  gap: 55px;
+
+  margin-top: 50px;
+
+  border-top: 1px solid var(--line);
+
+  padding-top: 25px;
+}
+
+.stats div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.stats strong {
+  font: 700 25px "Manrope";
+}
+
+.stats span {
+  font-size: 10px;
+
+  color: #777;
+
+  letter-spacing: 0.08em;
+}
+
+
+/* =========================
+   SERVICES
+========================= */
+
+.service-list {
+  border-top: 1px solid var(--line);
+}
+
+.service {
+  display: grid;
+
+  grid-template-columns: 60px 1fr 1fr 35px;
+
+  gap: 20px;
+
+  align-items: center;
+
+  padding: 27px 0;
+
+  border-bottom: 1px solid var(--line);
+
+  transition:
+    padding 0.3s ease,
+    background 0.3s ease;
+}
+
+.service:hover {
+  padding-left: 12px;
+  padding-right: 12px;
+
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.service > span {
+  font: 600 10px "Manrope";
+
+  color: #777;
+}
+
+.service h3 {
+  font-size: 26px;
+}
+
+.service p {
+  font-size: 12px;
+
+  line-height: 1.6;
+
+  color: #777;
+
+  max-width: 340px;
+}
+
+.service b {
+  font-size: 17px;
+
+  color: var(--accent);
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact {
+  min-height: 75vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  border-top: 1px solid var(--line);
+}
+
+.contact h2 {
+  margin-bottom: 55px;
+}
+
+.contact-link {
+  font:
+    600 clamp(18px, 2.2vw, 28px)
+    "Manrope";
+
+  width: max-content;
+
+  border-bottom: 1px solid #444;
+
+  padding-bottom: 10px;
+
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.contact-link:hover {
+  border-color: var(--accent);
+}
+
+.contact-link span {
+  color: var(--accent);
+
+  margin-left: 35px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  max-width: var(--max);
+
+  margin: auto;
+
+  padding: 25px 28px 35px;
+
+  border-top: 1px solid var(--line);
+
+  display: flex;
+
+  justify-content: space-between;
+
+  font: 600 9px "Manrope";
+
+  letter-spacing: 0.13em;
+
+  color: #686864;
+}
+
+footer a:hover {
+  color: #fff;
+}
+
+
+/* =========================
+   REVEAL ANIMATION
+========================= */
+
+.reveal {
+  opacity: 0;
+
+  transform: translateY(25px);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+
+  transform: none;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 850px) {
+
+  .nav nav {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+
+    padding-top: 55px;
+  }
+
+  .hero-visual {
+    min-height: 480px;
+  }
+
+  .frame {
+    height: 450px;
+  }
+
+  .frame-art {
+    height: 385px;
+  }
+
+  .section {
+    padding: 90px 22px;
+  }
+
+  .section-head {
+    display: block;
+  }
+
+  .section-note {
+    margin-top: 25px;
+  }
+
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .work-card.large {
+    grid-row: auto;
+  }
+
+  .work-card.wide {
+    grid-column: auto;
+  }
+
+  .large .visual,
+  .wide .visual {
+    height: 430px;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+  }
+
+  .service {
+    grid-template-columns: 35px 1fr 28px;
+  }
+
+  .service p {
+    display: none;
+  }
+
+  .stats {
+    gap: 25px;
+  }
+
+  .contact {
+    min-height: 60vh;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 520px) {
+
+  .nav {
+    padding: 0 18px;
+  }
+
+  .nav-cta {
+    display: none;
+  }
+
+  h1 {
+    font-size: 62px;
+  }
+
+  .hero {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .hero-visual {
+    min-height: 410px;
+  }
+
+  .frame {
+    height: 390px;
+
+    width: 88%;
+  }
+
+  .frame-art {
+    height: 325px;
+  }
+
+  .art-letter {
+    font-size: 190px;
+  }
+
+  .visual {
+    height: 320px;
+  }
+
+  .large .visual,
+  .wide .visual {
+    height: 360px;
+  }
+
+  .stats {
+    flex-wrap: wrap;
+  }
+
+  .stats div {
+    min-width: 90px;
+  }
+
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+
+  .section-head h2,
+  .about h2,
+  .contact h2 {
+    font-size: 45px;
+  }
+
+  footer {
+    flex-direction: column;
+
+    gap: 15px;
+  }
+}
